@@ -1,4 +1,4 @@
-from telegram import Update  # type: ignore
+from telegram import Update, ReplyKeyboardMarkup  # type: ignore
 
 from telegram.ext import (  # type: ignore
     ApplicationBuilder,
@@ -14,7 +14,6 @@ TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 
 def get_answer(message):
-
     if message == "привет":
         return "Привет!"
 
@@ -33,8 +32,19 @@ def get_answer(message):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+    keyboard = [
+        ["привет", "как дела"],
+        ["кто ты", "ты ии"],
+    ]
+
+    reply_markup = ReplyKeyboardMarkup(
+        keyboard,
+        resize_keyboard=True
+    )
+
     await update.message.reply_text(
-        "Привет! Напиши мне что-нибудь."
+        "Привет! Выбери вопрос или напиши свой:",
+        reply_markup=reply_markup
     )
 
 
