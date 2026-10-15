@@ -9,6 +9,7 @@ from telegram.ext import (  # type: ignore
 )
 
 import os
+from bot import get_answer
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
