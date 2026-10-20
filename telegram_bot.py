@@ -35,12 +35,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Привет! Как тебя зовут?"
     )
 
-async def get_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    chat_id = update.effective_chat.id
-
-    await update.message.reply_text(
-        f"Твой chat_id: {chat_id}"
-    )
 
 # Эта функция будет обрабатывать обычные сообщения пользователя.
 async def answer_message(
@@ -230,7 +224,6 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(
     CommandHandler("start", start)
 )
-app.add_handler(CommandHandler("id", get_id))
 
 # Все обычные текстовые сообщения
 # отправляем в функцию answer_message().
